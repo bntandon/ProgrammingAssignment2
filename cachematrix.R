@@ -37,8 +37,19 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
-
+## Comments describing this function
+## Function 1st gets lower environment variable value for 'm'(<<)
+## x is the handle for the list created by the makeCacheMatrix - special vector
+## that would have initialized 'm' (<<) to null
+## x$getreverse retrieve the exisitng value. In the first call this value is NULL
+## if the value is NULL ,message is skipped and 
+## x$get is executed which returns the agrument supplied to makeCacheMatrix
+## m <- solve(data, ...) then stores the inverse in local m variable
+## and x$setreverse(m) passed new value to function(solve) m <<- solve in makeCacheMatrix
+## that stores value in 'm' (<<) in the lower environment
+## When this function is clled second time, m <- x$getreverse () get non NULL value
+## hence message is first printed and returns stored 'm' (<<)  
+ 
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
   # This function computes the inverse of the special "matrix"
